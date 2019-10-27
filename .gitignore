@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# But not Java files...
+!.gitignore
+!*.java
+!README.md
+!LICENSE
+!pom.xml
+!target/**
+
+# ...even if they are in subdirectories
+!*/
+
