@@ -7,7 +7,6 @@
 !README.md
 !LICENSE
 !pom.xml
-!target/**
 
 # ...even if they are in subdirectories
 !*/
