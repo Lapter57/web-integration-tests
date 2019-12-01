@@ -25,5 +25,4 @@ public class LoginPage extends BasePage {
         type(PASSWORD, bot.getPassword());
         click(LOGIN_BTN);
     }
-
 }
