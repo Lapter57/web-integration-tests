@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 public class NotesPage extends BasePage {
     private static final By NOTES =
             By.xpath(".//*[@class='feed' and @tsid='userStatusShares']//*[@class='media-text_cnt']");
-
     private static final By MIDDLE_COLUMN = By.id("middleColumn");
 
     public NotesPage(final WebDriver driver) {
