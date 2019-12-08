@@ -34,14 +34,14 @@ public class SettingsPage extends BasePage {
     }
 
     public void clickPersonalData() {
+        explicitWait(ExpectedConditions.visibilityOfElementLocated(PERSONAL_DATA), 10, 500);
         Assert.assertTrue("Personal data is not visible", isElementVisible(PERSONAL_DATA));
-        explicitWait(ExpectedConditions.elementToBeClickable(PERSONAL_DATA), 10, 500);
         click(PERSONAL_DATA);
     }
 
     public void clickPassword() {
+        explicitWait(ExpectedConditions.visibilityOfElementLocated(PASSWORD), 10, 500);
         Assert.assertTrue("Field of password is not visible", isElementVisible(PASSWORD));
-        explicitWait(ExpectedConditions.elementToBeClickable(PASSWORD), 10, 500);
         click(PASSWORD);
     }
 

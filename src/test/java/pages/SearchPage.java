@@ -11,7 +11,6 @@ public class SearchPage extends BasePage {
     private static final By SEARCH = By.id("query_usersearch");
     private static final String ADD_FRIEND_BTN_TEMPLATE =
             ".//a[contains(@href, 'cmd=AddFriendButton') and contains(@href, 'st.query=%s')]";
-
     private static final By ERRORS = By.xpath(".//span[@class='c-red' and string-length(text()) > 0]");
 
     public SearchPage(final WebDriver driver) {

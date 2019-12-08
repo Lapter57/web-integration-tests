@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class UserMainPage extends BasePage {
-
     private static final By OPEN_NOTE_LINK = By.xpath(".//*[@class='pf-head_cnt']//a");
     private static final By NOTES_BTN = By.xpath(".//*[@class='nav-side __navigation']//a[@data-l='t,userStatuses']");
     private static final By MY_SETTINGS = By.xpath(".//*[@data-l='t,avaActionMenuUser']//a[@href='/settings']");
@@ -38,8 +37,8 @@ public class UserMainPage extends BasePage {
     }
 
     private void clickNote() {
+        explicitWait(ExpectedConditions.visibilityOfElementLocated(OPEN_NOTE_LINK), 10, 500);
         Assert.assertTrue("Keep area is not visible", isElementVisible(OPEN_NOTE_LINK));
-        explicitWait(ExpectedConditions.elementToBeClickable(OPEN_NOTE_LINK), 10, 500);
         click(OPEN_NOTE_LINK);
     }
 
@@ -66,21 +65,18 @@ public class UserMainPage extends BasePage {
     public void clickMySettingsBtn() {
         explicitWait(ExpectedConditions.visibilityOfElementLocated(MY_SETTINGS), 10, 500);
         Assert.assertTrue("My settings is not visible", isElementVisible(MY_SETTINGS));
-        explicitWait(ExpectedConditions.elementToBeClickable(MY_SETTINGS), 10, 500);
         click(MY_SETTINGS);
     }
 
     public void clickMusicBtn() {
         explicitWait(ExpectedConditions.visibilityOfElementLocated(MUSIC_TOOLBAR_BTN), 10, 500);
         Assert.assertTrue("Music button is not visible", isElementVisible(MUSIC_TOOLBAR_BTN));
-        explicitWait(ExpectedConditions.elementToBeClickable(MUSIC_TOOLBAR_BTN), 10, 500);
         click(MUSIC_TOOLBAR_BTN);
     }
 
     public void clickFriendsBtn() {
         explicitWait(ExpectedConditions.visibilityOfElementLocated(FRIENDS_TOOLBAR_BTN), 10, 500);
         Assert.assertTrue("Friends button is not visible", isElementVisible(FRIENDS_TOOLBAR_BTN));
-        explicitWait(ExpectedConditions.elementToBeClickable(FRIENDS_TOOLBAR_BTN), 10, 500);
         click(FRIENDS_TOOLBAR_BTN);
     }
 }

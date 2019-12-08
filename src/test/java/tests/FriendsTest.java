@@ -8,7 +8,6 @@ import pages.SearchPage;
 import pages.UserMainPage;
 
 public class FriendsTest extends TestBase {
-
     private static final String BAD_GUY = "TechoBot12 TechoBot12";
 
     @Test

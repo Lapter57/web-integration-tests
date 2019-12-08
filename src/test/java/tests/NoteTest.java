@@ -9,7 +9,6 @@ import pages.UserMainPage;
 import java.util.List;
 
 public class NoteTest extends TestBase {
-
     private static final int SIZE_NOTE = 10;
 
     @Test

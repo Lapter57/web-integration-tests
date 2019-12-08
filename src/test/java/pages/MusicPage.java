@@ -50,8 +50,8 @@ public class MusicPage extends BasePage {
     }
 
     private void showFoundPlaylists() {
+        explicitWait(ExpectedConditions.visibilityOfElementLocated(PLAYLIST_BTN), 10, 500);
         Assert.assertTrue("Add compilation button is not visible", isElementVisible(PLAYLIST_BTN));
-        explicitWait(ExpectedConditions.elementToBeClickable(PLAYLIST_BTN), 10, 500);
         click(PLAYLIST_BTN);
     }
 
