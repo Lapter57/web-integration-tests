@@ -6,9 +6,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.seleniumhq.jetty9.server.PushBuilder;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     private static final String BASE_URL = "https://ok.ru";
@@ -22,6 +22,7 @@ public class TestBase {
     @BeforeEach
     public void setUp() {
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(BASE_URL);
     }
 
@@ -42,5 +43,9 @@ public class TestBase {
 
     private int randomId() {
         return ThreadLocalRandom.current().nextInt(0, 100);
+    }
+
+    public static String generateRandomString(final int size) {
+        return RandomStringUtils.randomAlphabetic(size);
     }
 }
