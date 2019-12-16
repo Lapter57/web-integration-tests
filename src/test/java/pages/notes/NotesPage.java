@@ -2,11 +2,9 @@ package pages.notes;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.BasePage;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NotesPage extends BasePage {
     private static final By NOTES =
@@ -22,9 +20,8 @@ public class NotesPage extends BasePage {
         return List.of(MIDDLE_COLUMN);
     }
 
-    public List<String> getNotes() {
-        return driver.findElements(NOTES).stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
+    public boolean isNoteExist(final String note) {
+        final Notes notes = new Notes(driver, driver.findElements(NOTES));
+        return notes.isNoteExist(note);
     }
 }
