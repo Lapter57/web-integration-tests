@@ -1,14 +1,17 @@
 package pages.login;
 
 import model.Bot;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pages.BasePage;
 
 import java.util.List;
 
 public class LoginPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(LoginPage.class);
+
     private static final By LOGIN = By.xpath(".//input[@data-l='t,login']");;
     private static final By PASSWORD = By.xpath(".//input[@data-l='t,password']");
     private static final By LOGIN_BTN = By.xpath(".//*[@type='submit' and @data-l='t,sign_in']");
@@ -23,14 +26,11 @@ public class LoginPage extends BasePage {
     }
 
     public void login(final Bot bot) {
-        Assert.assertTrue("Login field is not visible", isElementVisible(LOGIN));
         type(LOGIN, bot.getLogin());
-
-        Assert.assertTrue("Password field is not visible", isElementVisible(PASSWORD));
+        log.debug("Typed the login \"{}\"", bot.getLogin());
         type(PASSWORD, bot.getPassword());
-
-        Assert.assertTrue("Login button is not visible", isElementVisible(LOGIN_BTN));
-        Assert.assertTrue("Login button is disabled", isElementEnabled(LOGIN_BTN));
+        log.debug("Typed the password \"{}\"", bot.getPassword());
         click(LOGIN_BTN);
+        log.debug("Clicked to login in \"{}\"", bot.getPassword());
     }
 }

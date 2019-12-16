@@ -1,6 +1,7 @@
 package pages;
 
 import com.google.common.base.Preconditions;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -33,12 +34,15 @@ public abstract class BasePage {
 
     public void type(final By by,
                      final String text) {
+        Assert.assertTrue("Field is not visible", isElementVisible(by));
         final WebElement el = driver.findElement(by);
         el.clear();
         el.sendKeys(text);
     }
 
     public void click(final By by) {
+        Assert.assertTrue("Button is not visible", isElementVisible(by));
+        Assert.assertTrue("Button is disabled", isElementEnabled(by));
         driver.findElement(by).click();
     }
 
