@@ -15,10 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-abstract class BasePage {
+public abstract class BasePage {
     protected WebDriver driver;
 
-    BasePage(final WebDriver driver) {
+    public BasePage(final WebDriver driver) {
         this.driver = driver;
         waitPageLoad();
     }

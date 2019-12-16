@@ -1,9 +1,10 @@
-package pages;
+package pages.login;
 
 import model.Bot;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 import java.util.List;
 

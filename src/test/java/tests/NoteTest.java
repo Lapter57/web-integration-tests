@@ -2,9 +2,9 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import pages.LoginPage;
-import pages.NotesPage;
-import pages.UserMainPage;
+import pages.login.LoginPage;
+import pages.notes.NotesPage;
+import pages.feed.UserMainPage;
 
 import java.util.List;
 
@@ -16,9 +16,7 @@ public class NoteTest extends TestBase {
         new LoginPage(driver).login(getTechnoBot());
         final UserMainPage userMainPage = new UserMainPage(driver);
         final String note = generateRandomString(SIZE_NOTE);
-        userMainPage.createNote(note);
-        userMainPage.clickNotesBtn();
-        final NotesPage notesPage = new NotesPage(driver);
+        final NotesPage notesPage = userMainPage.createNote(note).clickNotesBtn();
         final List<String> keeps = notesPage.getNotes();
         Assert.assertTrue("Note wasn't added", keeps.contains(note));
     }

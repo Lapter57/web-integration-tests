@@ -1,9 +1,8 @@
-package pages;
+package pages.friends;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import pages.BasePage;
 
 import java.util.List;
 
@@ -19,10 +18,8 @@ public class FriendsPage extends BasePage {
         return List.of(SEARCH_FRIENDS_BY_NAME_FIELD);
     }
 
-    public void searchFriendByName() {
-        Assert.assertTrue("Field of search friends by name is not visible",
-                isElementVisible(SEARCH_FRIENDS_BY_NAME_FIELD));
-        explicitWait(ExpectedConditions.elementToBeClickable(SEARCH_FRIENDS_BY_NAME_FIELD), 10, 500);
+    public SearchFriendsPage searchFriendByName() {
         click(SEARCH_FRIENDS_BY_NAME_FIELD);
+        return new SearchFriendsPage(driver);
     }
 }
