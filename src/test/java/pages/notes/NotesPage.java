@@ -7,8 +7,7 @@ import pages.BasePage;
 import java.util.List;
 
 public class NotesPage extends BasePage {
-    private static final By NOTES =
-            By.xpath(".//*[@class='feed' and @tsid='userStatusShares']//*[@class='media-text_cnt']");
+    private static final By NOTES = By.xpath(".//*[@class='feed' and @tsid='userStatusShares']");
     private static final By MIDDLE_COLUMN = By.id("middleColumn");
 
     public NotesPage(final WebDriver driver) {
@@ -21,7 +20,9 @@ public class NotesPage extends BasePage {
     }
 
     public boolean isNoteExist(final String note) {
-        final Notes notes = new Notes(driver, driver.findElements(NOTES));
-        return notes.isNoteExist(note);
+       return driver.findElements(NOTES).stream()
+               .map(el -> new Note(driver, el))
+               .map(Note::getText)
+               .anyMatch(n -> n.equals(note));
     }
 }

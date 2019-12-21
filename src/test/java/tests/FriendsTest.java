@@ -12,8 +12,7 @@ public class FriendsTest extends TestBase {
 
     @Test
     public void inabilityAddUserWhoBlockedYou() {
-        new LoginPage(driver).login(getTechnoBot());
-        final UserMainPage userMainPage = new UserMainPage(driver);
+        final UserMainPage userMainPage = new LoginPage(driver).login(getTechnoBot());
         final FriendsPage friendsPage = userMainPage.clickFriendsBtn();
         SearchFriendsPage searchPage = friendsPage.searchFriendByName();
         searchPage = searchPage.addFriend(BAD_GUY);

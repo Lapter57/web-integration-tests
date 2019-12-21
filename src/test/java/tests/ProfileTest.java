@@ -2,8 +2,8 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import pages.login.LoginPage;
 import pages.feed.UserMainPage;
+import pages.login.LoginPage;
 import pages.settings.SettingsPage;
 
 public class ProfileTest extends TestBase {
@@ -11,22 +11,27 @@ public class ProfileTest extends TestBase {
 
     @Test
     public void inabilityChangePersonalDataWithBlankFields() {
-        new LoginPage(driver).login(getTechnoBot());
-        final UserMainPage userMainPage = new UserMainPage(driver);
+        final UserMainPage userMainPage = new LoginPage(driver).login(getTechnoBot());
         final SettingsPage settingsPage = userMainPage.clickMySettingsBtn();
-        settingsPage.changePersonalData("", "", "");
+        settingsPage.clickPersonalData()
+                .typeName("")
+                .typeSurname("")
+                .typeLocation("")
+                .changePersonalData();
         Assert.assertTrue("Personal data was changed", settingsPage.isErrorsExist());
     }
 
     @Test
     public void inabilityChangePasswordIfCurrentPasswordEnteredIncorrectly() {
-        new LoginPage(driver).login(getTechnoBot());
-        final UserMainPage userMainPage = new UserMainPage(driver);
-        userMainPage.clickMySettingsBtn();
-        final SettingsPage settingsPage = new SettingsPage(driver);
+        final UserMainPage userMainPage = new LoginPage(driver).login(getTechnoBot());
+        final SettingsPage settingsPage = userMainPage.clickMySettingsBtn();;
         final String currentPassword = generateRandomString(PASSWORD_SIZE);
         final String newPassword = generateRandomString(PASSWORD_SIZE);
-        settingsPage.changePassword(currentPassword, newPassword);
+        settingsPage.clickPassword()
+                .typeCurrentPassword(currentPassword)
+                .typeNewPassword(newPassword)
+                .retypeNewPassword(newPassword)
+                .saveNewPassword();
         Assert.assertTrue("Password was changed", settingsPage.isErrorsExist());
     }
 }

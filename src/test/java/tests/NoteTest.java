@@ -11,8 +11,7 @@ public class NoteTest extends TestBase {
 
     @Test
     public void addNote() {
-        new LoginPage(driver).login(getTechnoBot());
-        final UserMainPage userMainPage = new UserMainPage(driver);
+        final UserMainPage userMainPage = new LoginPage(driver).login(getTechnoBot());
         final String note = generateRandomString(SIZE_NOTE);
         final NotesPage notesPage = userMainPage.createNote(note).clickNotesBtn();
         Assert.assertTrue("Note wasn't added", notesPage.isNoteExist(note));
